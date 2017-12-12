@@ -22,11 +22,11 @@ def main():
 main()
 
 os.system('bet' input x output -F')
-%we have to do pass a variable as a string
-use %s
+#we have to do pass a variable as a string
+#use %s
 os.system('bet %s %s -F'%(x, output))
-percent fills sequentially
-also can do %i and %f 
+#percent fills sequentially
+#also can do %i and %f 
 print(os.system('echo $FSLDIR'))
 input=glob.glob('/home/fsluser/Desktop/ds000030_R1.0.5/sub-*bart-*/func/sub-*.nii.gz')
 print(input[0:10])
@@ -40,15 +40,34 @@ print(y)
 sub=y[5]
 print(sub)
 
-%nicer version
+#nicer version
 sub=input('/')[5]
 print(sub)
-%input was defined by glob
-%same in matlab
+#input was defined by glob
+#same in matlab
 
-%now split on the dot
+#now split on the dot
 
 subtask=input[1].split('/')[7].split('.')[0]
 print(subtask)
 output=subtask+'_brain'
 print(output)
+
+need os.path.join gives you the strings and it will format it for me. 
+understads strings and variables
+path=os.path.join(basedir,'sub_*', 'func','sub-*bart*.nii.gz')
+print path
+input=glob.glob(path)
+len(input[1:5])
+print(input[0:2])
+
+#Starting over
+def prepro(basedir):
+    for item in glob.glob(os.path.join(basedir,'sub_*', 'func','sub-*bart*.nii.gz')):
+        input=item
+        output_path=item.split('.')[0]
+        output=output_path+('_brain')
+        os.system("/fsluser/bin/bet %s %s -F"%(x, output) )
+        pdb.set_trace()
+        #debugging statement which lets you check and make sure stuff works,stopped before it relooped
+        
