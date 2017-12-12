@@ -21,7 +21,12 @@ def main():
     prepro(basedir)    
 main()
 
-os.system(bet input output -)
+os.system('bet' input x output -F')
+%we have to do pass a variable as a string
+use %s
+os.system('bet %s %s -F'%(x, output))
+percent fills sequentially
+also can do %i and %f 
 print(os.system('echo $FSLDIR'))
 input=glob.glob('/home/fsluser/Desktop/ds000030_R1.0.5/sub-*bart-*/func/sub-*.nii.gz')
 print(input[0:10])
@@ -40,3 +45,10 @@ sub=input('/')[5]
 print(sub)
 %input was defined by glob
 %same in matlab
+
+%now split on the dot
+
+subtask=input[1].split('/')[7].split('.')[0]
+print(subtask)
+output=subtask+'_brain'
+print(output)
